@@ -1,0 +1,145 @@
+<!-- Specify the document type as HTML5 -->
+<!DOCTYPE html>
+<!-- Start the HTML element and set primary language to English -->
+<html lang="en">
+<!-- Head section containing metadata, titles, and styles -->
+<head>
+  <!-- Character encoding -->
+  <meta charset="UTF-8">
+  <!-- Viewport settings for mobile responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Page tab title -->
+  <title>Journal</title>
+  <!-- Link external stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Import FontAwesome icon library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<!-- Visible body layout -->
+<body>
+  <!-- Smartphone frame container -->
+  <div class="app-container">
+    <!-- Header section -->
+    <header class="header">
+      <!-- App Title -->
+      <h1>Journal</h1>
+      <!-- Action buttons -->
+      <div class="header-actions">
+        <button class="icon-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn"><i class="fa-solid fa-ellipsis"></i></button>
+      </div>
+    </header>
+
+    <!-- Stat Cards Container (Clickable to open Insights) -->
+    <section class="stats-container" id="statsContainer">
+      <div class="stat-card">
+        <span class="stat-number" id="entryCount">0</span>
+        <span class="stat-label"><i class="fa-solid fa-book icon-purple"></i> Entry This Year</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="wordCount">0</span>
+        <span class="stat-label"><i class="fa-solid fa-quote-left icon-pink"></i> Word Written</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="dayCount">0</span>
+        <span class="stat-label"><i class="fa-solid fa-calendar-days icon-violet"></i> Day Journaled</span>
+      </div>
+    </section>
+
+    <!-- Main Entry Content -->
+    <main class="content">
+      <h2 class="section-title">Today</h2>
+      <div id="entriesList" class="entries-list"></div>
+    </main>
+
+    <!-- Floating Add Button -->
+    <button class="fab" id="openModalBtn">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+
+    <!-- Add Entry Modal -->
+    <div class="modal" id="entryModal">
+      <div class="modal-content">
+        <h3>New Journal Entry</h3>
+        <input type="text" id="entryTitle" placeholder="Title (e.g. Gym)" required />
+        <textarea id="entryBody" placeholder="Write your thoughts..." rows="5"></textarea>
+        <div class="modal-actions">
+          <button id="cancelBtn" class="btn secondary">Cancel</button>
+          <button id="saveBtn" class="btn primary">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights Sheet Modal -->
+    <div class="insights-modal" id="insightsModal">
+      <div class="insights-content">
+        <!-- Insights Header -->
+        <div class="insights-header">
+          <h2>Insights</h2>
+          <button class="close-insights-btn" id="closeInsightsBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="insights-body">
+          <!-- Streaks Card -->
+          <div class="streaks-card">
+            <span class="streaks-tag">Streaks</span>
+            <h3>No Current Streak</h3>
+            <p>Journal at least once a week to build a streak.</p>
+            <button class="schedule-btn"><i class="fa-solid fa-calendar-check"></i> Set Schedule</button>
+          </div>
+
+          <!-- Stats Card -->
+          <div class="insights-stats-card">
+            <div class="stats-card-left">
+              <span class="insight-big-num" id="insightEntryCount">1</span>
+              <span class="insight-label">Entry<br>This Year</span>
+            </div>
+            <div class="bar-chart">
+              <div class="bar-col"><span>10</span><span>5</span><span>0</span></div>
+              <div class="bars-wrapper">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar active-bar" style="height: 25%;"></div><div class="bar"></div><div class="bar"></div>
+                <div class="months-labels">
+                  <span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span>
+                  <span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calendar Section -->
+          <div class="calendar-card">
+            <div class="calendar-header">
+              <span class="month-year-title">October 2026 &gt;</span>
+              <div class="cal-nav">
+                <button>&lt;</button>
+                <button>&gt;</button>
+              </div>
+            </div>
+            <div class="calendar-grid">
+              <span class="day-name">SUN</span><span class="day-name">MON</span><span class="day-name">TUE</span>
+              <span class="day-name">WED</span><span class="day-name">THU</span><span class="day-name">FRI</span><span class="day-name">SAT</span>
+
+              <!-- Week 1 -->
+              <span></span><span></span><span></span><span></span><span class="cal-day">1</span><span class="cal-day">2</span><span class="cal-day">3</span>
+              <!-- Week 2 -->
+              <span class="cal-day">4</span><span class="cal-day">5</span><span class="cal-day">6</span><span class="cal-day">7</span><span class="cal-day">8</span><span class="cal-day">9</span><span class="cal-day">10</span>
+              <!-- Week 3 -->
+              <span class="cal-day">11</span><span class="cal-day">12</span><span class="cal-day">13</span>
+              <span class="cal-day active-day">14<span class="blue-dot"></span></span>
+              <span class="cal-day muted">15</span><span class="cal-day muted">16</span><span class="cal-day muted">17</span>
+              <!-- Week 4 -->
+              <span class="cal-day muted">18</span><span class="cal-day muted">19</span><span class="cal-day muted">20</span>
+              <span class="cal-day muted">21</span><span class="cal-day muted">22</span><span class="cal-day muted">23</span><span class="cal-day muted">24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
